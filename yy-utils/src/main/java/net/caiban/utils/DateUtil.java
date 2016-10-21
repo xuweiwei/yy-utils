@@ -531,4 +531,121 @@ public class DateUtil {
 		}
 		return iMonth;
 	}
+	/**
+	 * 返回年份
+	 *
+	 * @param date
+	 *            日期
+	 * @return 返回年份
+	 */
+	public static int getYear(Date date) {
+		Calendar c = Calendar.getInstance();
+		c.setTime(date);
+		return c.get(Calendar.YEAR);
+	}
+
+	/**
+	 * 返回月份
+	 *
+	 * @param date
+	 *            日期
+	 * @return 返回月份
+	 */
+	public static int getMonth(Date date) {
+		Calendar c = Calendar.getInstance();
+		c.setTime(date);
+		return c.get(Calendar.MONTH) + 1;
+	}
+
+	/**
+	 * 返回日份
+	 *
+	 * @param date
+	 *            日期
+	 * @return 返回日份
+	 */
+	public static int getDay(Date date) {
+		Calendar c = Calendar.getInstance();
+		c.setTime(date);
+		return c.get(Calendar.DAY_OF_MONTH);
+	}
+
+	/**
+	 * 返回小时
+	 *
+	 * @param date
+	 *            日期
+	 * @return 返回小时
+	 */
+	public static int getHour(Date date) {
+		Calendar c = Calendar.getInstance();
+		c.setTime(date);
+		return c.get(Calendar.HOUR_OF_DAY);
+	}
+	/**
+	 * 返回分钟
+	 * @param date
+	 * 日期
+	 * @return 返回分钟
+	 */
+	public static int getMinute(Date date) {
+		Calendar c = Calendar.getInstance();
+		c.setTime(date);
+		return c.get(Calendar.MINUTE);
+	}
+
+	/**
+	 * 返回秒钟
+	 *
+	 * @param date
+	 *            日期
+	 * @return 返回秒钟
+	 */
+	public static int getSecond(Date date) {
+		Calendar c = Calendar.getInstance();
+		c.setTime(date);
+		return c.get(Calendar.SECOND);
+	}
+
+	/**
+	 * 返回毫秒
+	 *
+	 * @param date
+	 *            日期
+	 * @return 返回毫秒
+	 */
+	public static long getMillis(Date date) {
+		Calendar c = Calendar.getInstance();
+		c.setTime(date);
+		return c.getTimeInMillis();
+	}
+	/**
+	 * 日期相加
+	 *
+	 * @param date
+	 *            日期
+	 * @param day
+	 *            天数
+	 * @return 返回相加后的日期
+	 */
+	public static Date addDate(Date date, int day) {
+		Calendar c = Calendar.getInstance();
+		c.setTimeInMillis(getMillis(date) + ((long) day) * 24 * 3600 * 1000);
+		return c.getTime();
+	}
+
+	/**
+	 * 日期相减
+	 *
+	 * @param date
+	 *            日期
+	 * @param date1
+	 *            日期
+	 * @return 返回date - date1 相减后的日期
+	 */
+	public static int diffDate(String date, String date1) {
+		if(date == null || date1 == null) return 0;
+		return (int) ((getMillis(getDate(date)) - getMillis(getDate(date1))) / (24 * 3600 * 1000));
+	}
+
 }
